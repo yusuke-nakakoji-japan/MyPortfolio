@@ -39,7 +39,8 @@ const Projects: React.FC = () => {
       <div className="text-center px-4">
         <h1 className="text-4xl font-bold text-primary mb-4">プロジェクト一覧</h1>
         <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-          これまでに開発したプロジェクトの一覧です。各プロジェクトの詳細はGitHubリポジトリでご確認いただけます。
+          これまでに趣味で開発した一部のプロジェクトの一覧です。<br />
+          各プロジェクトの詳細はGitHubリポジトリでご確認いただけます。
         </p>
       </div>
 
