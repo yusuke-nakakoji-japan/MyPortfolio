@@ -1,39 +1,7 @@
 import React from 'react';
-
-interface Project {
-  id: number;
-  title: string;
-  description: string;
-  technologies: string[];
-  githubUrl: string;
-  imageUrl?: string;
-}
+import { projects } from '../data/projects';
 
 const Projects: React.FC = () => {
-  const projects: Project[] = [
-    {
-      id: 1,
-      title: 'プロジェクト1',
-      description: 'プロジェクト1の詳細な説明がここに入ります。実装した機能や技術的な特徴について説明します。',
-      technologies: ['React', 'TypeScript', 'Tailwind CSS'],
-      githubUrl: 'https://github.com/yourusername/project1',
-    },
-    {
-      id: 2,
-      title: 'プロジェクト2',
-      description: 'プロジェクト2の詳細な説明がここに入ります。実装した機能や技術的な特徴について説明します。',
-      technologies: ['Next.js', 'Node.js', 'MongoDB'],
-      githubUrl: 'https://github.com/yourusername/project2',
-    },
-    {
-      id: 3,
-      title: 'プロジェクト3',
-      description: 'プロジェクト3の詳細な説明がここに入ります。実装した機能や技術的な特徴について説明します。',
-      technologies: ['React Native', 'Firebase', 'Redux'],
-      githubUrl: 'https://github.com/yourusername/project3',
-    },
-  ];
-
   return (
     <div className="space-y-12 py-12">
       <div className="text-center px-4">
@@ -47,7 +15,25 @@ const Projects: React.FC = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
         {projects.map((project) => (
           <div key={project.id} className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-            <div className="h-48 bg-gray-200"></div>
+            {project.videoUrl ? (
+              <div className="relative pt-[56.25%]">
+                <iframe
+                  className="absolute top-0 left-0 w-full h-full"
+                  src={project.videoUrl}
+                  title={`${project.title} demo video`}
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            ) : project.imageUrl ? (
+              <div 
+                className="h-48 bg-cover bg-center" 
+                style={{ backgroundImage: `url(${project.imageUrl})` }}
+              ></div>
+            ) : (
+              <div className="h-48 bg-gray-200"></div>
+            )}
             <div className="p-6">
               <h2 className="text-2xl font-semibold text-primary mb-2">{project.title}</h2>
               <p className="text-gray-600 mb-4">{project.description}</p>
@@ -66,28 +52,60 @@ const Projects: React.FC = () => {
                 </div>
               </div>
 
-              <a
-                href={project.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center text-primary hover:text-primary-dark transition-colors"
-              >
-                <span>GitHubで見る</span>
-                <svg
-                  className="w-4 h-4 ml-2"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
+              <div className="flex gap-4">
+                <a
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center text-primary hover:text-primary-dark transition-colors"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                  />
-                </svg>
-              </a>
+                  <span>GitHubで見る</span>
+                  <svg
+                    className="w-4 h-4 ml-2"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                    />
+                  </svg>
+                </a>
+                {project.demoUrl && (
+                  <a
+                    href={project.demoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center text-primary hover:text-primary-dark transition-colors"
+                  >
+                    <span>デモを見る</span>
+                    <svg
+                      className="w-4 h-4 ml-2"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                      />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                      />
+                    </svg>
+                  </a>
+                )}
+              </div>
             </div>
           </div>
         ))}
