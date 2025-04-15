@@ -36,7 +36,7 @@ const Projects: React.FC = () => {
             )}
             <div className="p-6">
               <h2 className="text-2xl font-semibold text-primary mb-2">{project.title}</h2>
-              <p className="text-gray-600 mb-4">{project.description}</p>
+              <p className="text-gray-600 mb-4 whitespace-pre-line">{project.description}</p>
               
               <div className="mb-4">
                 <h3 className="text-sm font-semibold text-gray-500 mb-2">使用技術</h3>
