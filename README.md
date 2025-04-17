@@ -26,32 +26,6 @@ Reactを使用した静的Webサイトで、GitHub Pagesでホスティングし
 - **ルーティング**: React Router
 - **デプロイ**: GitHub Pages
 
-## 開発環境のセットアップ
-
-### 必要条件
-
-- Node.js (v14以上)
-- npm (v6以上)
-
-### インストール手順
-
-1. リポジトリをクローンする:
-   ```
-   git clone https://github.com/yusuke-nakakoji-japan/MyPortfolio.git
-   cd MyPortfolio
-   ```
-
-2. 依存関係をインストールする:
-   ```
-   npm install
-   ```
-
-3. 開発サーバーを起動する:
-   ```
-   npm start
-   ```
-   ブラウザで http://localhost:3000 にアクセスして開発中のサイトを確認できます。
-
 ## デプロイ手順
 
 GitHub Pagesへのデプロイは以下の手順で行います：
@@ -70,16 +44,6 @@ GitHub Pagesへのデプロイは以下の手順で行います：
 
 3. 数分後に以下のURLで更新が反映されます:
    https://yusuke-nakakoji-japan.github.io/MyPortfolio
-
-## プロジェクト構造
-
-```
-src/
-├── components/     # 再利用可能なUIコンポーネント
-├── data/           # プロジェクトデータなどの静的データ
-├── pages/          # ページコンポーネント
-├── App.tsx         # アプリのルーティング設定
-└── index.tsx       # エントリーポイント
 ```
 
 ## ライセンス
